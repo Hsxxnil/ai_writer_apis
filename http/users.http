@@ -1,0 +1,60 @@
+### login
+POST {{host}}/sien/v1.0/login
+Content-Type: application/json
+
+{
+  "user_name": "test",
+  "password": "123456"
+}
+
+> {% client.global.set("accessToken", response.body.body.access_token); %}
+
+### GetByList
+GET {{host}}/sien/v1.0/users?page=1&limit=20
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+
+### GetBySingle
+GET {{host}}/sien/v1.0/users/39a2d69c-452b-410f-8753-f8a92802c3a2
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+
+### Create
+POST {{host}}/sien/v1.0/users
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "user_name": "",
+  "name": "",
+  "password": "",
+  "phone_number": "",
+  "email": ""
+}
+
+### Register
+POST {{host}}/sien/v1.0/users/register
+Content-Type: application/json
+
+{
+  "user_name": "",
+  "name": "",
+  "password": "",
+  "phone_number": "",
+  "email": ""
+}
+
+### Update
+PATCH {{host}}/sien/v1.0/users/3d183fc1-10ca-46ce-9e61-bddc73b8f189
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "name": ""
+}
+
+### Delete
+DELETE {{host}}/sien/v1.0/users/e2a1e2d0-75eb-4713-835d-5a866fea3d7f
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+

@@ -1,0 +1,67 @@
+### login
+POST {{host}}/sien/v1.0/login
+Content-Type: application/json
+
+{
+  "user_name": "hsxxnil",
+  "password": "12345"
+}
+
+> {% client.global.set("accessToken", response.body.body.access_token); %}
+
+### GetByList
+GET {{host}}/sien/v1.0/articles?page=1&limit=20
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+
+### GetBySingle
+GET {{host}}/sien/v1.0/articles/39a2d69c-452b-410f-8753-f8a92802c3a2
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+
+### Create
+POST {{host}}/sien/v1.0/articles
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "content_type": "論壇",
+  "forum": "Dcard",
+  "board": "美妝",
+  "type": "商品體驗開箱文",
+  "style": "溫馨感人",
+  "sponsorship": "輕",
+  "gender": "女",
+  "age": [
+    20,
+    45
+  ],
+  "character_trait": "",
+  "character_remarks": "",
+  "product_name": "口紅",
+  "product_feature": "滋潤",
+  "product_highlights": ".",
+  "has_comparative": false,
+  "title": "test",
+  "word_limit": 400,
+  "key_message": "",
+  "story": "",
+  "created_at": "",
+  "update_at": ""
+}
+
+### Update
+PATCH {{host}}/sien/v1.0/articles/3d183fc1-10ca-46ce-9e61-bddc73b8f189
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "modify_article": "abc",
+  "rating": 0
+}
+
+### Delete
+DELETE {{host}}/sien/v1.0/articles/e2a1e2d0-75eb-4713-835d-5a866fea3d7f
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+

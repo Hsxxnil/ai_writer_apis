@@ -1,0 +1,1682 @@
+{
+    "schemes": [
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "AI WRITER APIs",
+        "title": "AI WRITER APIs",
+        "contact": {},
+        "license": {
+            "name": "AGPL 3.0",
+            "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
+        },
+        "version": "0.1"
+    },
+    "host": "writer.t.api.qplan.ai",
+    "basePath": "/sien/v1.0",
+    "paths": {
+        "/articles": {
+            "get": {
+                "description": "取得全部文章",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "article"
+                ],
+                "summary": "取得全部文章",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "目前頁數,請從1開始帶入",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "一次回傳比數,請從1開始帶入,最高上限20",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "$ref": "#/definitions/articles.List"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "生成文章",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "article"
+                ],
+                "summary": "生成文章",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "生成文章",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/articles.Create"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/articles/{id}": {
+            "get": {
+                "description": "取得單一文章",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "article"
+                ],
+                "summary": "取得單一文章",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "文章ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "$ref": "#/definitions/articles.Single"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "刪除單一文章",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "article"
+                ],
+                "summary": "刪除單一文章",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "文章ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "更新單一文章",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "article"
+                ],
+                "summary": "更新單一文章",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "文章ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "更新文章",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/articles.Update"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/sien/v1.0/login": {
+            "post": {
+                "description": "使用者登入",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "login"
+                ],
+                "summary": "使用者登入",
+                "parameters": [
+                    {
+                        "description": "登入帶入",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/logins.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "$ref": "#/definitions/jwx.Token"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/sien/v1.0/refresh": {
+            "post": {
+                "description": "換新的令牌",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "login"
+                ],
+                "summary": "換新的令牌",
+                "parameters": [
+                    {
+                        "description": "登入帶入",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/jwx.Refresh"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "$ref": "#/definitions/jwx.Token"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/sien/v1.0/users": {
+            "get": {
+                "description": "取得全部使用者",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "取得全部使用者",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "目前頁數,請從1開始帶入",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "一次回傳比數,請從1開始帶入,最高上限20",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "$ref": "#/definitions/users.List"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "新增使用者",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "新增使用者",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "新增使用者",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.Create"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/sien/v1.0/users/register": {
+            "post": {
+                "description": "新增使用者",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "新增使用者",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "新增使用者",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.Create"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/sien/v1.0/users/{id}": {
+            "get": {
+                "description": "取得單一使用者",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "取得單一使用者",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "使用者ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "$ref": "#/definitions/users.Single"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "刪除單一使用者",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "刪除單一使用者",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "使用者ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "更新使用者",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.Update"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "更新單一使用者",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "更新單一使用者",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "JWE Token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "使用者ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "更新使用者",
+                        "name": "*",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/users.Update"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功後返回的值",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.SuccessfulMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "415": {
+                        "description": "必要欄位帶入錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "伺服器非預期錯誤",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/code.ErrorMessage"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "detailed": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "articles.Create": {
+            "type": "object",
+            "required": [
+                "age",
+                "board",
+                "content_type",
+                "forum",
+                "gender",
+                "product_feature",
+                "product_highlights",
+                "product_name",
+                "title",
+                "type",
+                "word_limit"
+            ],
+            "properties": {
+                "age": {
+                    "description": "人物年齡",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "board": {
+                    "description": "版位",
+                    "type": "string"
+                },
+                "character_remarks": {
+                    "description": "人物細部描述",
+                    "type": "string"
+                },
+                "character_trait": {
+                    "description": "人物特質",
+                    "type": "string"
+                },
+                "content_type": {
+                    "description": "文章設定\n內容形式",
+                    "type": "string"
+                },
+                "forum": {
+                    "description": "論壇",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "人物設定\n人物性別",
+                    "type": "string"
+                },
+                "has_comparative": {
+                    "description": "是否有競品",
+                    "type": "boolean"
+                },
+                "key_message": {
+                    "description": "關鍵訊息",
+                    "type": "string"
+                },
+                "product_feature": {
+                    "description": "產品特性",
+                    "type": "string"
+                },
+                "product_highlights": {
+                    "description": "產品亮點",
+                    "type": "string"
+                },
+                "product_name": {
+                    "description": "產品資訊\n產品名稱",
+                    "type": "string"
+                },
+                "sponsorship": {
+                    "description": "業配程度",
+                    "type": "string"
+                },
+                "story": {
+                    "description": "口碑切角",
+                    "type": "string"
+                },
+                "style": {
+                    "description": "文章風格",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "文章標題",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "文章類型",
+                    "type": "string"
+                },
+                "word_limit": {
+                    "description": "文章字數",
+                    "type": "integer"
+                }
+            }
+        },
+        "articles.List": {
+            "type": "object",
+            "required": [
+                "limit",
+                "page"
+            ],
+            "properties": {
+                "articles": {
+                    "description": "多筆",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "createdAt": {
+                                "description": "創建時間",
+                                "type": "string"
+                            },
+                            "created_by": {
+                                "description": "創建者",
+                                "type": "string"
+                            },
+                            "deletedAt": {
+                                "description": "刪除時間",
+                                "type": "string"
+                            },
+                            "id": {
+                                "description": "表ID",
+                                "type": "string"
+                            },
+                            "title": {
+                                "description": "文章標題",
+                                "type": "string"
+                            },
+                            "updatedAt": {
+                                "description": "更新時間",
+                                "type": "string"
+                            },
+                            "updated_by": {
+                                "description": "更新者",
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "limit": {
+                    "description": "筆數(請從1開始帶入,最高上限20)",
+                    "type": "integer"
+                },
+                "page": {
+                    "description": "頁數(請從1開始帶入)",
+                    "type": "integer"
+                },
+                "pages": {
+                    "description": "總頁數",
+                    "type": "integer"
+                },
+                "total": {
+                    "description": "總筆數",
+                    "type": "integer"
+                }
+            }
+        },
+        "articles.Single": {
+            "type": "object",
+            "properties": {
+                "ai_article": {
+                    "description": "生成文章",
+                    "type": "string"
+                },
+                "createdAt": {
+                    "description": "創建時間",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "創建者",
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "description": "刪除時間",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "表ID",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "文章標題",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "description": "更新時間",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "更新者",
+                    "type": "string"
+                }
+            }
+        },
+        "articles.Update": {
+            "type": "object",
+            "properties": {
+                "modify_article": {
+                    "description": "修改後的文章",
+                    "type": "string"
+                },
+                "rating": {
+                    "description": "文章分數",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "code.ErrorMessage": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "回傳代碼",
+                    "type": "integer"
+                },
+                "detailed": {
+                    "description": "詳細錯誤內容"
+                },
+                "message": {
+                    "description": "錯誤回傳訊息",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "錯誤時間",
+                    "type": "string",
+                    "example": "2021-07-29T07:23:47Z"
+                }
+            }
+        },
+        "code.SuccessfulMessage": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "description": "正確回傳內容"
+                },
+                "code": {
+                    "description": "回傳代碼",
+                    "type": "integer"
+                },
+                "timestamp": {
+                    "description": "錯誤時間",
+                    "type": "string",
+                    "example": "2021-07-29T07:23:47Z"
+                }
+            }
+        },
+        "jwx.Refresh": {
+            "type": "object",
+            "required": [
+                "refresh_token"
+            ],
+            "properties": {
+                "refresh_token": {
+                    "description": "刷新令牌",
+                    "type": "string"
+                }
+            }
+        },
+        "jwx.Token": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "description": "授權令牌",
+                    "type": "string"
+                },
+                "brand": {
+                    "description": "品牌",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名稱",
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "description": "刷新令牌",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "角色",
+                    "type": "string"
+                },
+                "user_id": {
+                    "description": "AccountID",
+                    "type": "string"
+                }
+            }
+        },
+        "logins.Login": {
+            "type": "object",
+            "required": [
+                "password",
+                "user_name"
+            ],
+            "properties": {
+                "password": {
+                    "description": "密碼",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "使用者名稱",
+                    "type": "string"
+                }
+            }
+        },
+        "users.Create": {
+            "type": "object",
+            "required": [
+                "name",
+                "password",
+                "user_name"
+            ],
+            "properties": {
+                "email": {
+                    "description": "使用者電子郵件",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "使用者中文名稱",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "使用者密碼",
+                    "type": "string"
+                },
+                "phone_number": {
+                    "description": "使用者電話",
+                    "type": "string"
+                },
+                "role_id": {
+                    "description": "角色ID",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "使用者名稱",
+                    "type": "string"
+                }
+            }
+        },
+        "users.List": {
+            "type": "object",
+            "required": [
+                "limit",
+                "page"
+            ],
+            "properties": {
+                "limit": {
+                    "description": "筆數(請從1開始帶入,最高上限20)",
+                    "type": "integer"
+                },
+                "page": {
+                    "description": "頁數(請從1開始帶入)",
+                    "type": "integer"
+                },
+                "pages": {
+                    "description": "總頁數",
+                    "type": "integer"
+                },
+                "total": {
+                    "description": "總筆數",
+                    "type": "integer"
+                },
+                "users": {
+                    "description": "多筆",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "createdAt": {
+                                "description": "創建時間",
+                                "type": "string"
+                            },
+                            "created_by": {
+                                "description": "創建者",
+                                "type": "string"
+                            },
+                            "deletedAt": {
+                                "description": "刪除時間",
+                                "type": "string"
+                            },
+                            "email": {
+                                "description": "使用者電子郵件",
+                                "type": "string"
+                            },
+                            "id": {
+                                "description": "表ID",
+                                "type": "string"
+                            },
+                            "name": {
+                                "description": "使用者中文名稱",
+                                "type": "string"
+                            },
+                            "phone_number": {
+                                "description": "使用者電話",
+                                "type": "string"
+                            },
+                            "role_id": {
+                                "description": "角色ID",
+                                "type": "string"
+                            },
+                            "role_name": {
+                                "description": "角色名稱",
+                                "type": "string"
+                            },
+                            "updatedAt": {
+                                "description": "更新時間",
+                                "type": "string"
+                            },
+                            "updated_by": {
+                                "description": "更新者",
+                                "type": "string"
+                            },
+                            "user_name": {
+                                "description": "使用者名稱",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "users.Single": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "description": "創建時間",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "創建者",
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "description": "刪除時間",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "使用者電子郵件",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "表ID",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "使用者中文名稱",
+                    "type": "string"
+                },
+                "phone_number": {
+                    "description": "使用者電話",
+                    "type": "string"
+                },
+                "role_id": {
+                    "description": "角色ID",
+                    "type": "string"
+                },
+                "role_name": {
+                    "description": "角色名稱",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "description": "更新時間",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "使用者名稱",
+                    "type": "string"
+                }
+            }
+        },
+        "users.Update": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "description": "使用者電子郵件",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "使用者中文名稱",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "使用者密碼",
+                    "type": "string"
+                },
+                "phone_number": {
+                    "description": "使用者電話",
+                    "type": "string"
+                },
+                "role_id": {
+                    "description": "角色ID",
+                    "type": "string"
+                },
+                "updated_by": {
+                    "description": "更新者",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "使用者名稱",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
