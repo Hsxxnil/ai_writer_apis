@@ -91,9 +91,9 @@ func loadPolicy() {
 // 	return result, err
 // }
 
-func GetAllPolicies() [][]string {
-	return Enforcer.GetPolicy()
-}
+// func GetAllPolicies() [][]string {
+// 	return Enforcer.GetPolicy()
+// }
 
 // func CheckPermission(db *gorm.DB) gin.HandlerFunc {
 // 	return func(ctx *gin.Context) {
