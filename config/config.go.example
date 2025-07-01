@@ -21,4 +21,7 @@ const (
 	RefreshPublicKey  = ``
 	AccessPrivateKey  = ``
 	AccessPublicKey   = ``
+	// OpenAI API configuration
+	OpenApiKey     = ""
+	OrganizationID = ""
 )

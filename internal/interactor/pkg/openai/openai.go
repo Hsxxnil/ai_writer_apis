@@ -1,18 +1,13 @@
 package openai
 
 import (
+	"ai_writer/config"
 	"ai_writer/internal/interactor/pkg/util/log"
 	"context"
 	"math"
 
 	"github.com/bytedance/sonic"
 	"github.com/sashabaranov/go-openai"
-)
-
-// config your openai api key and organization id
-const (
-	openApiKey     = "REMOVED"
-	organizationID = "REMOVED"
 )
 
 // UploadFileRequest is a used to upload file to openai
@@ -58,7 +53,7 @@ func Chat(input string, limit int) (output string, err error) {
 	token := int(math.Floor((fli * 1.5) + 0.5))
 
 	// create the client
-	client := openai.NewClient(openApiKey)
+	client := openai.NewClient(config.OpenApiKey)
 
 	// configure the request
 	req := openai.ChatCompletionRequest{
@@ -93,7 +88,7 @@ func Chat(input string, limit int) (output string, err error) {
 // FineTuning is a used to fine-tuning the GPT model
 func FineTuning(input FineTuningRequest) error {
 	// create the client
-	client := openai.NewClient(openApiKey)
+	client := openai.NewClient(config.OpenApiKey)
 
 	// upload files
 	var trainingFile, validationFile string
@@ -155,7 +150,7 @@ func FineTuning(input FineTuningRequest) error {
 func UploadFileToOpenAi(input UploadFileRequest) (*FileResults, error) {
 	output := &FileResults{}
 	// create the client
-	client := openai.NewClient(openApiKey)
+	client := openai.NewClient(config.OpenApiKey)
 
 	// configure the request
 	req := openai.FileBytesRequest{
