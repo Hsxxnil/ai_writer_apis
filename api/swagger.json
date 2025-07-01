@@ -1,6 +1,6 @@
 {
     "schemes": [
-        "https"
+        "http"
     ],
     "swagger": "2.0",
     "info": {
@@ -13,8 +13,8 @@
         },
         "version": "0.1"
     },
-    "host": "writer.t.api.qplan.ai",
-    "basePath": "/sien/v1.0",
+    "host": "localhost:8081",
+    "basePath": "/ai-writer/v1.0",
     "paths": {
         "/articles": {
             "get": {
@@ -463,7 +463,7 @@
                 }
             }
         },
-        "/sien/v1.0/login": {
+        "/login": {
             "post": {
                 "description": "使用者登入",
                 "consumes": [
@@ -545,7 +545,7 @@
                 }
             }
         },
-        "/sien/v1.0/refresh": {
+        "/refresh": {
             "post": {
                 "description": "換新的令牌",
                 "consumes": [
@@ -627,7 +627,7 @@
                 }
             }
         },
-        "/sien/v1.0/users": {
+        "/users": {
             "get": {
                 "description": "取得全部使用者",
                 "consumes": [
@@ -808,7 +808,7 @@
                 }
             }
         },
-        "/sien/v1.0/users/register": {
+        "/users/register": {
             "post": {
                 "description": "新增使用者",
                 "consumes": [
@@ -897,7 +897,7 @@
                 }
             }
         },
-        "/sien/v1.0/users/{id}": {
+        "/users/{id}": {
             "get": {
                 "description": "取得單一使用者",
                 "consumes": [
@@ -1484,6 +1484,11 @@
                 "user_name"
             ],
             "properties": {
+                "active": {
+                    "description": "是否啟用",
+                    "type": "boolean",
+                    "default": true
+                },
                 "email": {
                     "description": "使用者電子郵件",
                     "type": "string"
@@ -1499,6 +1504,11 @@
                 "phone_number": {
                     "description": "使用者電話",
                     "type": "string"
+                },
+                "point": {
+                    "description": "點數",
+                    "type": "integer",
+                    "default": 0
                 },
                 "role_id": {
                     "description": "角色ID",
@@ -1539,6 +1549,10 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "active": {
+                                "description": "是否啟用",
+                                "type": "boolean"
+                            },
                             "createdAt": {
                                 "description": "創建時間",
                                 "type": "string"
@@ -1566,6 +1580,10 @@
                             "phone_number": {
                                 "description": "使用者電話",
                                 "type": "string"
+                            },
+                            "point": {
+                                "description": "點數",
+                                "type": "integer"
                             },
                             "role_id": {
                                 "description": "角色ID",
@@ -1595,6 +1613,10 @@
         "users.Single": {
             "type": "object",
             "properties": {
+                "active": {
+                    "description": "是否啟用",
+                    "type": "boolean"
+                },
                 "createdAt": {
                     "description": "創建時間",
                     "type": "string"
@@ -1623,6 +1645,10 @@
                     "description": "使用者電話",
                     "type": "string"
                 },
+                "point": {
+                    "description": "點數",
+                    "type": "integer"
+                },
                 "role_id": {
                     "description": "角色ID",
                     "type": "string"
@@ -1648,6 +1674,10 @@
         "users.Update": {
             "type": "object",
             "properties": {
+                "active": {
+                    "description": "是否啟用",
+                    "type": "boolean"
+                },
                 "email": {
                     "description": "使用者電子郵件",
                     "type": "string"
@@ -1663,6 +1693,10 @@
                 "phone_number": {
                     "description": "使用者電話",
                     "type": "string"
+                },
+                "point": {
+                    "description": "點數",
+                    "type": "integer"
                 },
                 "role_id": {
                     "description": "角色ID",

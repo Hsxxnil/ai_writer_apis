@@ -466,7 +466,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/sien/v1.0/login": {
+        "/login": {
             "post": {
                 "description": "使用者登入",
                 "consumes": [
@@ -548,7 +548,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/sien/v1.0/refresh": {
+        "/refresh": {
             "post": {
                 "description": "換新的令牌",
                 "consumes": [
@@ -630,7 +630,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/sien/v1.0/users": {
+        "/users": {
             "get": {
                 "description": "取得全部使用者",
                 "consumes": [
@@ -811,7 +811,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/sien/v1.0/users/register": {
+        "/users/register": {
             "post": {
                 "description": "新增使用者",
                 "consumes": [
@@ -900,7 +900,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/sien/v1.0/users/{id}": {
+        "/users/{id}": {
             "get": {
                 "description": "取得單一使用者",
                 "consumes": [
@@ -1487,6 +1487,11 @@ const docTemplate = `{
                 "user_name"
             ],
             "properties": {
+                "active": {
+                    "description": "是否啟用",
+                    "type": "boolean",
+                    "default": true
+                },
                 "email": {
                     "description": "使用者電子郵件",
                     "type": "string"
@@ -1502,6 +1507,11 @@ const docTemplate = `{
                 "phone_number": {
                     "description": "使用者電話",
                     "type": "string"
+                },
+                "point": {
+                    "description": "點數",
+                    "type": "integer",
+                    "default": 0
                 },
                 "role_id": {
                     "description": "角色ID",
@@ -1542,6 +1552,10 @@ const docTemplate = `{
                     "items": {
                         "type": "object",
                         "properties": {
+                            "active": {
+                                "description": "是否啟用",
+                                "type": "boolean"
+                            },
                             "createdAt": {
                                 "description": "創建時間",
                                 "type": "string"
@@ -1569,6 +1583,10 @@ const docTemplate = `{
                             "phone_number": {
                                 "description": "使用者電話",
                                 "type": "string"
+                            },
+                            "point": {
+                                "description": "點數",
+                                "type": "integer"
                             },
                             "role_id": {
                                 "description": "角色ID",
@@ -1598,6 +1616,10 @@ const docTemplate = `{
         "users.Single": {
             "type": "object",
             "properties": {
+                "active": {
+                    "description": "是否啟用",
+                    "type": "boolean"
+                },
                 "createdAt": {
                     "description": "創建時間",
                     "type": "string"
@@ -1626,6 +1648,10 @@ const docTemplate = `{
                     "description": "使用者電話",
                     "type": "string"
                 },
+                "point": {
+                    "description": "點數",
+                    "type": "integer"
+                },
                 "role_id": {
                     "description": "角色ID",
                     "type": "string"
@@ -1651,6 +1677,10 @@ const docTemplate = `{
         "users.Update": {
             "type": "object",
             "properties": {
+                "active": {
+                    "description": "是否啟用",
+                    "type": "boolean"
+                },
                 "email": {
                     "description": "使用者電子郵件",
                     "type": "string"
@@ -1666,6 +1696,10 @@ const docTemplate = `{
                 "phone_number": {
                     "description": "使用者電話",
                     "type": "string"
+                },
+                "point": {
+                    "description": "點數",
+                    "type": "integer"
                 },
                 "role_id": {
                     "description": "角色ID",
@@ -1687,9 +1721,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "0.1",
-	Host:             "writer.t.api.qplan.ai",
-	BasePath:         "/sien/v1.0",
-	Schemes:          []string{"https"},
+	Host:             "localhost:8081",
+	BasePath:         "/ai-writer/v1.0",
+	Schemes:          []string{"http"},
 	Title:            "AI WRITER APIs",
 	Description:      "AI WRITER APIs",
 	InfoInstanceName: "swagger",

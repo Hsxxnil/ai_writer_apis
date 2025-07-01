@@ -45,8 +45,8 @@ func Init(db *gorm.DB) Control {
 // @success 200 object code.SuccessfulMessage{body=string} "成功後返回的值"
 // @failure 415 object code.ErrorMessage{detailed=string} "必要欄位帶入錯誤"
 // @failure 500 object code.ErrorMessage{detailed=string} "伺服器非預期錯誤"
-// @Router /sien/v1.0/users [post]
-// @Router /sien/v1.0/users/register [post]
+// @Router /users [post]
+// @Router /users/register [post]
 func (c *control) Create(ctx *gin.Context) {
 	trx := ctx.MustGet("db_trx").(*gorm.DB)
 	input := &userModel.Create{}
@@ -74,7 +74,7 @@ func (c *control) Create(ctx *gin.Context) {
 // @success 200 object code.SuccessfulMessage{body=users.List} "成功後返回的值"
 // @failure 415 object code.ErrorMessage{detailed=string} "必要欄位帶入錯誤"
 // @failure 500 object code.ErrorMessage{detailed=string} "伺服器非預期錯誤"
-// @Router /sien/v1.0/users [get]
+// @Router /users [get]
 func (c *control) GetByList(ctx *gin.Context) {
 	input := &userModel.Fields{}
 	page := ctx.Query("page")
@@ -108,7 +108,7 @@ func (c *control) GetByList(ctx *gin.Context) {
 // @success 200 object code.SuccessfulMessage{body=users.Single} "成功後返回的值"
 // @failure 415 object code.ErrorMessage{detailed=string} "必要欄位帶入錯誤"
 // @failure 500 object code.ErrorMessage{detailed=string} "伺服器非預期錯誤"
-// @Router /sien/v1.0/users/{id} [get]
+// @Router /users/{id} [get]
 func (c *control) GetBySingle(ctx *gin.Context) {
 	id := ctx.Param("id")
 	input := &userModel.Field{}
@@ -137,7 +137,7 @@ func (c *control) GetBySingle(ctx *gin.Context) {
 // @success 200 object code.SuccessfulMessage{body=string} "成功後返回的值"
 // @failure 415 object code.ErrorMessage{detailed=string} "必要欄位帶入錯誤"
 // @failure 500 object code.ErrorMessage{detailed=string} "伺服器非預期錯誤"
-// @Router /sien/v1.0/users/{id} [delete]
+// @Router /users/{id} [delete]
 func (c *control) Delete(ctx *gin.Context) {
 	trx := ctx.MustGet("db_trx").(*gorm.DB)
 	id := ctx.Param("id")
@@ -167,7 +167,7 @@ func (c *control) Delete(ctx *gin.Context) {
 // @success 200 object code.SuccessfulMessage{body=string} "成功後返回的值"
 // @failure 415 object code.ErrorMessage{detailed=string} "必要欄位帶入錯誤"
 // @failure 500 object code.ErrorMessage{detailed=string} "伺服器非預期錯誤"
-// @Router /sien/v1.0/users/{id} [patch]
+// @Router /users/{id} [patch]
 func (c *control) Update(ctx *gin.Context) {
 	trx := ctx.MustGet("db_trx").(*gorm.DB)
 	id := ctx.Param("id")

@@ -1,5 +1,5 @@
 ### login
-POST {{host}}/sien/v1.0/login
+POST {{host}}/ai-writer/v1.0/login
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 > {% client.global.set("refreshToken", response.body.body.refresh_token); %}
 
 ### refresh
-POST {{host}}/sien/v1.0/refresh
+POST {{host}}/ai-writer/v1.0/refresh
 Content-Type: application/json
 
 {

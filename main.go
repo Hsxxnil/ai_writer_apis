@@ -30,9 +30,9 @@ import (
 //	@license.name	AGPL 3.0
 //	@license.url	https://www.gnu.org/licenses/agpl-3.0.en.html
 
-// @host		writer.t.api.qplan.ai
-// @BasePath	/sien/v1.0
-// @schemes	https
+// @host		localhost:8081
+// @BasePath	/ai-writer/v1.0
+// @schemes	http
 func main() {
 	db, err := connect.PostgresSQL()
 	if err != nil {

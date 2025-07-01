@@ -1,4 +1,4 @@
-basePath: /sien/v1.0
+basePath: /ai-writer/v1.0
 definitions:
   articles.Create:
     properties:
@@ -229,6 +229,10 @@ definitions:
     type: object
   users.Create:
     properties:
+      active:
+        default: true
+        description: 是否啟用
+        type: boolean
       email:
         description: 使用者電子郵件
         type: string
@@ -241,6 +245,10 @@ definitions:
       phone_number:
         description: 使用者電話
         type: string
+      point:
+        default: 0
+        description: 點數
+        type: integer
       role_id:
         description: 角色ID
         type: string
@@ -270,6 +278,9 @@ definitions:
         description: 多筆
         items:
           properties:
+            active:
+              description: 是否啟用
+              type: boolean
             created_by:
               description: 創建者
               type: string
@@ -291,6 +302,9 @@ definitions:
             phone_number:
               description: 使用者電話
               type: string
+            point:
+              description: 點數
+              type: integer
             role_id:
               description: 角色ID
               type: string
@@ -314,6 +328,9 @@ definitions:
     type: object
   users.Single:
     properties:
+      active:
+        description: 是否啟用
+        type: boolean
       created_by:
         description: 創建者
         type: string
@@ -335,6 +352,9 @@ definitions:
       phone_number:
         description: 使用者電話
         type: string
+      point:
+        description: 點數
+        type: integer
       role_id:
         description: 角色ID
         type: string
@@ -353,6 +373,9 @@ definitions:
     type: object
   users.Update:
     properties:
+      active:
+        description: 是否啟用
+        type: boolean
       email:
         description: 使用者電子郵件
         type: string
@@ -365,6 +388,9 @@ definitions:
       phone_number:
         description: 使用者電話
         type: string
+      point:
+        description: 點數
+        type: integer
       role_id:
         description: 角色ID
         type: string
@@ -375,7 +401,7 @@ definitions:
         description: 使用者名稱
         type: string
     type: object
-host: writer.t.api.qplan.ai
+host: localhost:8081
 info:
   contact: {}
   description: AI WRITER APIs
@@ -639,7 +665,7 @@ paths:
       summary: 更新單一文章
       tags:
       - article
-  /sien/v1.0/login:
+  /login:
     post:
       consumes:
       - application/json
@@ -684,7 +710,7 @@ paths:
       summary: 使用者登入
       tags:
       - login
-  /sien/v1.0/refresh:
+  /refresh:
     post:
       consumes:
       - application/json
@@ -729,7 +755,7 @@ paths:
       summary: 換新的令牌
       tags:
       - login
-  /sien/v1.0/users:
+  /users:
     get:
       consumes:
       - application/json
@@ -832,7 +858,7 @@ paths:
       summary: 新增使用者
       tags:
       - user
-  /sien/v1.0/users/{id}:
+  /users/{id}:
     delete:
       consumes:
       - application/json
@@ -989,7 +1015,7 @@ paths:
       summary: 更新單一使用者
       tags:
       - user
-  /sien/v1.0/users/register:
+  /users/register:
     post:
       consumes:
       - application/json
@@ -1040,5 +1066,5 @@ paths:
       tags:
       - user
 schemes:
-- https
+- http
 swagger: "2.0"
