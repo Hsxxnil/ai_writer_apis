@@ -2,18 +2,18 @@ package auth
 
 import (
 
-	// policyModel "sien_apis/internal/interactor/models/policies"
-	"sien_apis/internal/interactor/pkg/connect"
+	// policyModel "ai_writer/internal/interactor/models/policies"
+	"ai_writer/internal/interactor/pkg/connect"
 
 	"github.com/casbin/casbin/v2"
 
-	// roleModel "sien_apis/internal/interactor/models/roles"
-	// "sien_apis/internal/interactor/service/role"
+	// roleModel "ai_writer/internal/interactor/models/roles"
+	// "ai_writer/internal/interactor/service/role"
 
 	"github.com/casbin/casbin/v2/model"
 
-	_ "sien_apis/internal/interactor/pkg/connect"
-	"sien_apis/internal/interactor/pkg/util/log"
+	_ "ai_writer/internal/interactor/pkg/connect"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	gormAdapter "github.com/casbin/gorm-adapter/v3"
 	_ "gorm.io/driver/postgres"

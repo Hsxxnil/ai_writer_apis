@@ -1,11 +1,12 @@
 package openai
 
 import (
+	"ai_writer/internal/interactor/pkg/util/log"
 	"context"
+	"math"
+
 	"github.com/bytedance/sonic"
 	"github.com/sashabaranov/go-openai"
-	"math"
-	"sien_apis/internal/interactor/pkg/util/log"
 )
 
 // config your openai api key and organization id

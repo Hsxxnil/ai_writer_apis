@@ -1,6 +1,6 @@
-module sien_apis
+module ai_writer
 
-go 1.21
+go 1.23.8
 
 require (
 	github.com/apex/gateway v1.1.2

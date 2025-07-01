@@ -3,10 +3,10 @@ package middleware
 import (
 	"net/http"
 
-	"sien_apis/config"
-	"sien_apis/internal/interactor/pkg/jwx"
-	"sien_apis/internal/interactor/pkg/util/code"
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/config"
+	"ai_writer/internal/interactor/pkg/jwx"
+	"ai_writer/internal/interactor/pkg/util/code"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"github.com/gin-gonic/gin"
 )

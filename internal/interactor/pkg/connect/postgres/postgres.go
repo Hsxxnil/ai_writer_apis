@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

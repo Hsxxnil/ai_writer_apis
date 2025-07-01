@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"sien_apis/config"
+	"ai_writer/config"
 
-	dbConfig "sien_apis/internal/interactor/pkg/connect/postgres"
-	"sien_apis/internal/interactor/pkg/util"
-	"sien_apis/internal/interactor/pkg/util/log"
+	dbConfig "ai_writer/internal/interactor/pkg/connect/postgres"
+	"ai_writer/internal/interactor/pkg/util"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

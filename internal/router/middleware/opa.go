@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/open-policy-agent/opa/rego"

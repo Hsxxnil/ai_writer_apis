@@ -1,14 +1,15 @@
 package article
 
 import (
-	"github.com/bytedance/sonic"
-	store "sien_apis/internal/entity/postgresql/article"
-	db "sien_apis/internal/entity/postgresql/db/articles"
-	model "sien_apis/internal/interactor/models/articles"
+	store "ai_writer/internal/entity/postgresql/article"
+	db "ai_writer/internal/entity/postgresql/db/articles"
+	model "ai_writer/internal/interactor/models/articles"
 
-	"sien_apis/internal/interactor/pkg/util"
-	"sien_apis/internal/interactor/pkg/util/log"
-	"sien_apis/internal/interactor/pkg/util/uuid"
+	"github.com/bytedance/sonic"
+
+	"ai_writer/internal/interactor/pkg/util"
+	"ai_writer/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/pkg/util/uuid"
 
 	"gorm.io/gorm"
 )

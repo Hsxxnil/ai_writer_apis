@@ -4,12 +4,12 @@ import (
 	"net/http"
 	"strconv"
 
-	constant "sien_apis/internal/interactor/constants"
+	constant "ai_writer/internal/interactor/constants"
 
-	"sien_apis/internal/interactor/manager/user"
-	userModel "sien_apis/internal/interactor/models/users"
-	"sien_apis/internal/interactor/pkg/util/code"
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/manager/user"
+	userModel "ai_writer/internal/interactor/models/users"
+	"ai_writer/internal/interactor/pkg/util/code"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

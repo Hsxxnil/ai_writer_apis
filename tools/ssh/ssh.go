@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"sien_apis/config"
-	"sien_apis/internal/interactor/pkg/tunnel"
+	"ai_writer/config"
+	"ai_writer/internal/interactor/pkg/tunnel"
 )
 
 func main() {

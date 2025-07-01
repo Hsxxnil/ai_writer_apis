@@ -1,12 +1,14 @@
 package ai_forms
 
 import (
+	model "ai_writer/internal/entity/postgresql/db/articles"
+
 	"github.com/bytedance/sonic"
-	model "sien_apis/internal/entity/postgresql/db/articles"
+
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
-	"sien_apis/internal/interactor/pkg/util/log"
 )
 
 type Entity interface {

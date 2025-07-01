@@ -1,8 +1,8 @@
 package article
 
 import (
-	present "sien_apis/internal/presenter/article"
-	"sien_apis/internal/router/middleware"
+	present "ai_writer/internal/presenter/article"
+	"ai_writer/internal/router/middleware"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

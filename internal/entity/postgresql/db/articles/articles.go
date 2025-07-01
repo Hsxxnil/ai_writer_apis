@@ -1,7 +1,7 @@
 package articles
 
 import (
-	"sien_apis/internal/interactor/models/special"
+	"ai_writer/internal/interactor/models/special"
 )
 
 // Table struct is article database table struct

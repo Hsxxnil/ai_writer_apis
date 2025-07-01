@@ -1,16 +1,16 @@
 package main
 
 import (
+	"ai_writer/internal/interactor/pkg/connect"
 	"fmt"
 	"net/http"
-	"sien_apis/internal/interactor/pkg/connect"
 
-	_ "sien_apis/api"
-	"sien_apis/internal/interactor/pkg/util/log"
-	"sien_apis/internal/router"
-	"sien_apis/internal/router/article"
-	"sien_apis/internal/router/login"
-	"sien_apis/internal/router/user"
+	_ "ai_writer/api"
+	"ai_writer/internal/interactor/pkg/util/log"
+	"ai_writer/internal/router"
+	"ai_writer/internal/router/article"
+	"ai_writer/internal/router/login"
+	"ai_writer/internal/router/user"
 
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

@@ -3,8 +3,8 @@ package special
 import (
 	"time"
 
-	"sien_apis/internal/interactor/models/page"
-	"sien_apis/internal/interactor/models/section"
+	"ai_writer/internal/interactor/models/page"
+	"ai_writer/internal/interactor/models/section"
 
 	"gorm.io/gorm"
 )

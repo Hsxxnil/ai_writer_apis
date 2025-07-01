@@ -2,19 +2,20 @@ package login
 
 import (
 	"errors"
+
 	"github.com/bytedance/sonic"
 
-	"sien_apis/config"
+	"ai_writer/config"
 
-	jwxModel "sien_apis/internal/interactor/models/jwx"
-	loginsModel "sien_apis/internal/interactor/models/logins"
-	usersModel "sien_apis/internal/interactor/models/users"
-	"sien_apis/internal/interactor/pkg/jwx"
-	"sien_apis/internal/interactor/pkg/util"
-	"sien_apis/internal/interactor/pkg/util/code"
-	"sien_apis/internal/interactor/pkg/util/log"
-	jwxService "sien_apis/internal/interactor/service/jwx"
-	userService "sien_apis/internal/interactor/service/user"
+	jwxModel "ai_writer/internal/interactor/models/jwx"
+	loginsModel "ai_writer/internal/interactor/models/logins"
+	usersModel "ai_writer/internal/interactor/models/users"
+	"ai_writer/internal/interactor/pkg/jwx"
+	"ai_writer/internal/interactor/pkg/util"
+	"ai_writer/internal/interactor/pkg/util/code"
+	"ai_writer/internal/interactor/pkg/util/log"
+	jwxService "ai_writer/internal/interactor/service/jwx"
+	userService "ai_writer/internal/interactor/service/user"
 
 	"gorm.io/gorm"
 )

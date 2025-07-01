@@ -3,11 +3,11 @@ package login
 import (
 	"net/http"
 
-	"sien_apis/internal/interactor/manager/login"
-	jwxModel "sien_apis/internal/interactor/models/jwx"
-	loginModel "sien_apis/internal/interactor/models/logins"
-	"sien_apis/internal/interactor/pkg/util/code"
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/manager/login"
+	jwxModel "ai_writer/internal/interactor/models/jwx"
+	loginModel "ai_writer/internal/interactor/models/logins"
+	"ai_writer/internal/interactor/pkg/util/code"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

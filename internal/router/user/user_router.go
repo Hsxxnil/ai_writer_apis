@@ -1,8 +1,8 @@
 package user
 
 import (
-	present "sien_apis/internal/presenter/user"
-	"sien_apis/internal/router/middleware"
+	present "ai_writer/internal/presenter/user"
+	"ai_writer/internal/router/middleware"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

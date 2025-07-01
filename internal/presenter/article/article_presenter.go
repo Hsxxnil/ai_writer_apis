@@ -1,15 +1,15 @@
 package article
 
 import (
+	"ai_writer/internal/interactor/pkg/util"
 	"net/http"
-	"sien_apis/internal/interactor/pkg/util"
 
-	constant "sien_apis/internal/interactor/constants"
+	constant "ai_writer/internal/interactor/constants"
 
-	"sien_apis/internal/interactor/manager/article"
-	model "sien_apis/internal/interactor/models/articles"
-	"sien_apis/internal/interactor/pkg/util/code"
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/manager/article"
+	model "ai_writer/internal/interactor/models/articles"
+	"ai_writer/internal/interactor/pkg/util/code"
+	"ai_writer/internal/interactor/pkg/util/log"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

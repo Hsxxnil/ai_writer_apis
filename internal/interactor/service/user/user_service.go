@@ -1,16 +1,17 @@
 package user
 
 import (
-	"github.com/bytedance/sonic"
-	db "sien_apis/internal/entity/postgresql/db/users"
-	store "sien_apis/internal/entity/postgresql/user"
-	"sien_apis/internal/interactor/pkg/util/encryption"
-	"sien_apis/internal/interactor/pkg/util/hash"
+	db "ai_writer/internal/entity/postgresql/db/users"
+	store "ai_writer/internal/entity/postgresql/user"
+	"ai_writer/internal/interactor/pkg/util/encryption"
+	"ai_writer/internal/interactor/pkg/util/hash"
 
-	model "sien_apis/internal/interactor/models/users"
-	"sien_apis/internal/interactor/pkg/util"
-	"sien_apis/internal/interactor/pkg/util/log"
-	"sien_apis/internal/interactor/pkg/util/uuid"
+	"github.com/bytedance/sonic"
+
+	model "ai_writer/internal/interactor/models/users"
+	"ai_writer/internal/interactor/pkg/util"
+	"ai_writer/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/pkg/util/uuid"
 
 	"gorm.io/gorm"
 )

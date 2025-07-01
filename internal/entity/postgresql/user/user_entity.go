@@ -1,9 +1,10 @@
 package user
 
 import (
+	model "ai_writer/internal/entity/postgresql/db/users"
+	"ai_writer/internal/interactor/pkg/util/log"
+
 	"github.com/bytedance/sonic"
-	model "sien_apis/internal/entity/postgresql/db/users"
-	"sien_apis/internal/interactor/pkg/util/log"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"

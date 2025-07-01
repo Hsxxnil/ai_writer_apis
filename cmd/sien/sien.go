@@ -1,12 +1,12 @@
 package main
 
 import (
-	"sien_apis/internal/interactor/pkg/connect"
-	"sien_apis/internal/interactor/pkg/util/log"
-	"sien_apis/internal/router"
-	"sien_apis/internal/router/article"
-	"sien_apis/internal/router/login"
-	"sien_apis/internal/router/user"
+	"ai_writer/internal/interactor/pkg/connect"
+	"ai_writer/internal/interactor/pkg/util/log"
+	"ai_writer/internal/router"
+	"ai_writer/internal/router/article"
+	"ai_writer/internal/router/login"
+	"ai_writer/internal/router/user"
 
 	"github.com/apex/gateway"
 )

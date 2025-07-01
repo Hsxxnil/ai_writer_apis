@@ -1,8 +1,8 @@
 package articles
 
 import (
-	"sien_apis/internal/interactor/models/page"
-	"sien_apis/internal/interactor/models/section"
+	"ai_writer/internal/interactor/models/page"
+	"ai_writer/internal/interactor/models/section"
 )
 
 // Create struct is used to create article

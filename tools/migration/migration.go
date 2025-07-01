@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/golang-migrate/migrate/v4"
 	"time"
 
-	"sien_apis/config"
-	dbConfig "sien_apis/internal/interactor/pkg/connect/postgres"
-	"sien_apis/internal/interactor/pkg/util"
+	"github.com/golang-migrate/migrate/v4"
+
+	"ai_writer/config"
+	dbConfig "ai_writer/internal/interactor/pkg/connect/postgres"
+	"ai_writer/internal/interactor/pkg/util"
 
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"

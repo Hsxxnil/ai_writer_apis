@@ -1,13 +1,13 @@
 package jwx
 
 import (
-	"sien_apis/config"
+	"ai_writer/config"
 	"time"
 
-	model "sien_apis/internal/interactor/models/jwx"
-	"sien_apis/internal/interactor/pkg/jwx"
-	"sien_apis/internal/interactor/pkg/util"
-	"sien_apis/internal/interactor/pkg/util/log"
+	model "ai_writer/internal/interactor/models/jwx"
+	"ai_writer/internal/interactor/pkg/jwx"
+	"ai_writer/internal/interactor/pkg/util"
+	"ai_writer/internal/interactor/pkg/util/log"
 )
 
 type Service interface {

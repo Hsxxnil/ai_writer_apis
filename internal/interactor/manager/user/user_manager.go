@@ -2,19 +2,20 @@ package user
 
 import (
 	"errors"
+
 	"github.com/bytedance/sonic"
 
-	"sien_apis/internal/interactor/pkg/util"
+	"ai_writer/internal/interactor/pkg/util"
 
-	userModel "sien_apis/internal/interactor/models/users"
-	userService "sien_apis/internal/interactor/service/user"
+	userModel "ai_writer/internal/interactor/models/users"
+	userService "ai_writer/internal/interactor/service/user"
 
-	// userRoleService "sien_apis/internal/interactor/service/user_role"
+	// userRoleService "ai_writer/internal/interactor/service/user_role"
 
 	"gorm.io/gorm"
 
-	"sien_apis/internal/interactor/pkg/util/code"
-	"sien_apis/internal/interactor/pkg/util/log"
+	"ai_writer/internal/interactor/pkg/util/code"
+	"ai_writer/internal/interactor/pkg/util/log"
 )
 
 type Manager interface {
