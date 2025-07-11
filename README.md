@@ -1,4 +1,4 @@
-# AI Writer APIs
+## 📍 AI Writer APIs
 
 一套以 **Golang** + **PostgreSQL** 為後端、**Angular** 為前端框架開發的 **AI 產文平台**，結合 ChatGPT 語言模型，提供使用者高效產出內容的解決方案。
 平台特色如下：
@@ -11,12 +11,12 @@
 
 #Golang #Gin #PostgreSQL #Angular #PrimeNG #Swagger #ＯpenAI
 
-## 專案連結
+## 🔗 專案連結
 
 * 前端畫面：[點我查看](https://hsxxnil.notion.site/AI-11c5b51f95f581e3944bd0cc85581f2c)
 * Swagger API 文件：[點我查看](https://hsxxnil.github.io/swagger-ui/?urls.primaryName=AI)
 
-## 安裝
+## 🛠️ 安裝
 1. 下載專案
 
 ```bash
@@ -69,19 +69,19 @@ config/debug_config.go
 make update_lib
 ```
 
-## 資料庫遷移
+## 📁 資料庫遷移
 
 > 執行以下指令使用[golang-migrate](https://github.com/golang-migrate/migrate)做資料庫遷移及做資料表版控：
 ```bash
 make migration
 ```
 
-## 執行
+## 🚀 執行
 > 執行以下指令在本地端啟動伺服器並自動重載：
 ```bash
 make air
 ```
 
-## License
+## 🗒️ License
 
 本專案使用的 [Vodka](https://github.com/dylanlyu/vodka) 採用 [MIT License](https://opensource.org/licenses/MIT) 授權。
